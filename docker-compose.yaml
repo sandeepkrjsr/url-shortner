@@ -13,9 +13,14 @@ services:
     container_name: url-shortner-v1.0.${BUILD_NUMBER}
     ports:
       - "8080:8080"
+    volumes:
+      - redis-data:/data
     environment:
       SPRING_REDIS_HOST: redis
       SPRING_REDIS_PORT: 6379
     depends_on:
       - redis
     restart: always
+
+volumes:
+  redis-data:
