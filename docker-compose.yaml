@@ -9,8 +9,8 @@ services:
 
   url-shortner:
     build: .
-    image: url-shortner:v1.0.${BUILD_NUMBER}
-    container_name: url-shortner-v1.0.${BUILD_NUMBER}
+    image: url-shortner
+    container_name: url-shortner
     ports:
       - "8080:8080"
     volumes:
