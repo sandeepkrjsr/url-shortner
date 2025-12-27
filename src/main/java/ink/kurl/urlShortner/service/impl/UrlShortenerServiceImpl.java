@@ -3,7 +3,7 @@ package ink.kurl.urlShortner.service.impl;
 import static ink.kurl.urlShortner.util.Constants.CODE_LENGTH;
 import static ink.kurl.urlShortner.util.Constants.UPPERCASE;
 
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import ink.kurl.urlShortner.service.UrlShortenerService;
@@ -11,9 +11,9 @@ import ink.kurl.urlShortner.service.UrlShortenerService;
 @Service
 public class UrlShortenerServiceImpl implements UrlShortenerService {
 	
-	private final RedisTemplate<String, String> redisTemplate;
+	private final StringRedisTemplate redisTemplate;
 	
-	UrlShortenerServiceImpl(RedisTemplate<String, String>redisTemplate){
+	UrlShortenerServiceImpl(StringRedisTemplate redisTemplate){
 		this.redisTemplate = redisTemplate;
 	}
 	

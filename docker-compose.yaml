@@ -1,0 +1,21 @@
+services:
+
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  url-shortner:
+    build: .
+    image: url-shortner:v1.0.${BUILD_NUMBER}
+    container_name: url-shortner-v1.0.${BUILD_NUMBER}
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+    depends_on:
+      - redis
+    restart: always
