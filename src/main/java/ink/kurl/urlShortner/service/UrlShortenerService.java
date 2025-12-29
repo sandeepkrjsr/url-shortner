@@ -8,4 +8,6 @@ public interface UrlShortenerService {
 
 	public String getOriginalUrl(String shortCode);
 
+	public String getShortCode(String originalUrl);
+
 }

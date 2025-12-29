@@ -6,6 +6,7 @@ import static ink.kurl.urlShortner.util.Constants.UPPERCASE;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import ink.kurl.urlShortner.domain.enums.RedisDirectory;
 import ink.kurl.urlShortner.service.UrlShortenerService;
 
 @Service
@@ -29,12 +30,18 @@ public class UrlShortenerServiceImpl implements UrlShortenerService {
 	
 	@Override
 	public void saveUrl(String shortCode, String originalUrl) {
-		redisTemplate.opsForValue().set(shortCode, originalUrl);
+		redisTemplate.opsForValue().set(RedisDirectory.URL_SHORT_CODE.buildKey(shortCode), originalUrl);
+		redisTemplate.opsForValue().set(RedisDirectory.URL_ORIGINAL.buildKey(originalUrl), shortCode);
 	}
 
 	@Override
 	public String getOriginalUrl(String shortCode) {
-		return redisTemplate.opsForValue().get(shortCode);
+		return redisTemplate.opsForValue().get(RedisDirectory.URL_SHORT_CODE.buildKey(shortCode));
+	}
+	
+	@Override
+	public String getShortCode(String originalUrl) {
+		return redisTemplate.opsForValue().get(RedisDirectory.URL_ORIGINAL.buildKey(originalUrl));
 	}
 
 }

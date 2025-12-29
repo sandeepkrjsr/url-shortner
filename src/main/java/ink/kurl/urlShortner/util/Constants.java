@@ -2,7 +2,7 @@ package ink.kurl.urlShortner.util;
 
 public class Constants {
 	
-	public static final String BASE_URL = "http://kurl.ink/";
+	public static final String REDIRECT_URL = "http://localhost:8080/u/"; //"http://kurl.ink/"
 	
 	public static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	public static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
